@@ -1,0 +1,30 @@
+diarization_model: models/Nemotron-3-Diarization
+asr_model: models/Paraformer-zh-streaming
+streaming:
+  random_seed: 42
+  sd_chunk_frames: 14
+  spkcache_len: 264
+  fifo_len: 264
+  spkcache_update_period: 222
+  speech_threshold: 0.5
+  silence_seconds: 0.8
+  startup_fallback: true
+  routing: sum_continuous
+asr:
+  chunk_size: [0, 10, 5]
+  encoder_chunk_look_back: 4
+  decoder_chunk_look_back: 1
+odas:
+  binary: odaslive
+  channels: 6
+  array_diameter_mm: 70.1
+  max_sources: 6
+  num_potentials: 4
+  sample_rate: 16000
+  hop_size: 128
+  frame_size: 256
+  sound_speed: 343
+  gain: 1
+  search_space: upper
+  separation: dds
+  postfilter: none

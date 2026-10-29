@@ -1,0 +1,45 @@
+diarization_model: models/Nemotron-3-Diarization
+asr_model: models/Qwen3-ASR-1.7B
+# Optional fine-tuned weights: models/Qwen3-ASR-FT-robohead
+language: Chinese
+max_new_tokens: 512
+odas_delay_samples: 256
+wpe_offline:
+  fft_size: 512
+  hop_size: 128
+  taps: 10
+  delay: 3
+  iterations: 3
+  block_seconds: 30.0
+  context_seconds: 2.0
+  crossfade_seconds: 0.25
+wpe_online:
+  size: 512
+  hop: 128
+  taps: 5
+  delay: 3
+  alpha: 0.9999
+gss:
+  enabled: true
+  context_seconds: 5.0
+  batch_seconds: 20.0
+  max_segment_seconds: 20.0
+  iterations: 20
+windows:
+  max_seconds: 20.0
+  merge_gap: 0.3
+  padding: 0.15
+odas:
+  binary: odaslive
+  channels: 6
+  array_diameter_mm: 70.1
+  max_sources: 6
+  num_potentials: 4
+  sample_rate: 16000
+  hop_size: 128
+  frame_size: 256
+  sound_speed: 343
+  gain: 1
+  search_space: upper
+  separation: dds
+  postfilter: none

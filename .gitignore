@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*.so
+/data/
+/track1/data/
+/track2/data/
+/track1/exp/
+/track2/exp/
+/track1/models/
+/track2/models/
+*.log
+*.zip
+*.tar.gz
+*.nemo
+*.safetensors
+*.ckpt
+*.pt
