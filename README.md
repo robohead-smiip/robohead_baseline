@@ -32,6 +32,19 @@ Evaluation script: [robohead_evaluate_v1.sh](robohead_evaluate_v1.sh), run from 
 | 1     | Lowest tcpCER | Complete timestamped transcripts; collar 5 s                                       |
 | 2     | Lowest tcpCER | ED P95 ≤ 1.5 s; TTFST P95 ≤ 4.5 s; matching normalized final text in both passes |
 
+### tcpCER
+
+**tcpCER** (time-constrained concatenated minimum-permutation character error rate) compares speaker-wise concatenated transcripts under temporal constraints, selecting the speaker mapping with the fewest character errors.
+
+`tcpCER (%) = 100 × (S + D + I) / N`
+
+`S`, `D`, `I`: character substitutions, deletions and insertions; `N`: reference characters. Lower is better.
+
+- NFKC normalization, lowercase, remove `<...>` tags, retain letters and numbers.
+- Character-level MeetEval `tcpwer`, collar **5 s**.
+- Original reference segment boundaries: `character_based`; hypothesis: `character_based_points`.
+- Aggregate errors / reference characters over the complete evaluation manifest.
+
 ## Installation
 
 Place `robohead_baseline/` inside [NeMo Speech](https://github.com/NVIDIA-NeMo/Speech). Install from the checkout root; run each track from its own directory.
@@ -189,17 +202,3 @@ References and predictions use a MeetEval SegLST JSON array:
 - String IDs; consistent speaker IDs within each WAV.
 - `0 ≤ start_time < end_time ≤ duration`; overlapping speakers allowed.
 - Submission requirements: each track's README.
-
-### tcpCER
-
-**tcpCER** (time-constrained concatenated minimum-permutation character error rate) compares speaker-wise concatenated transcripts under temporal constraints, selecting the speaker mapping with the fewest character errors.
-
-`tcpCER (%) = 100 × (S + D + I) / N`
-
-`S`, `D`, `I`: character substitutions, deletions and insertions; `N`: reference characters. Lower is better.
-
-- NFKC normalization, lowercase, remove `<...>` tags, retain letters and numbers.
-- Character-level MeetEval `tcpwer`, collar **5 s**.
-- Original reference segment boundaries: `character_based`; hypothesis: `character_based_points`.
-- Aggregate errors / reference characters over the complete evaluation manifest.
-
