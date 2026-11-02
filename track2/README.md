@@ -133,6 +133,14 @@ Val sessions; SD chunk 1.12 s; tcpCER collar 5 s.
 | ----------------------- | ---------: | ---------: | ------------: | ----: | ----: |
 | Paraformer-zh-streaming |      78.22 |      0.483 |         2.382 | 0.508 | 1.967 |
 
+### Development Results
+
+Development sessions; SD chunk 1.12 s; tcpCER collar 5 s.
+
+| ASR model               | tcpCER (%) | ED P95 (s) | TTFST P95 (s) |   RTF |  RTFx |
+| ----------------------- | ---------: | ---------: | ------------: | ----: | ----: |
+| Paraformer-zh-streaming |      81.65 |      0.538 |         4.099 | 0.569 | 1.759 |
+
 ## Run Stages
 
 Run from `robohead_baseline/track2` in the `robohead` environment. Override paths with command-line options.
@@ -176,7 +184,7 @@ bash ../robohead_evaluate_v1.sh \
 
 Run Track 1 stage 0 first. Use all 28 val sessions, one recording per session.
 
-To preserve complete turns, [conf/session_crop.tsv](conf/session_crop.tsv) excludes opening counting and recording preparation at session boundaries.
+To preserve complete turns, [conf/session_crop_val.tsv](conf/session_crop_val.tsv) excludes opening counting and recording preparation at session boundaries.
 
 TSV bounds are seconds from the original AEC WAV start:
 

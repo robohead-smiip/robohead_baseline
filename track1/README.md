@@ -113,6 +113,15 @@ Val sessions with predicted-GSS audio; tcpCER collar 5 s.
 | Qwen3-ASR-1.7B        |           50.95 |           52.82 |
 | Qwen3-ASR-FT-robohead | **48.56** | **50.49** |
 
+### Development Results
+
+Development sessions with predicted-GSS audio; tcpCER collar 5 s.
+
+| Model                 | cpCER (%) | tcpCER (%) |
+| --------------------- | --------: | ---------: |
+| Qwen3-ASR-1.7B        |     64.78 |      67.19 |
+| Qwen3-ASR-FT-robohead | **60.94** |  **63.36** |
+
 ## Evaluation
 
 **Metric: tcpCER, ascending.** MeetEval uses a 5-second collar and the shared [normalization and timing rules](../README.md#tcpcer).
